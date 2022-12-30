@@ -15,14 +15,13 @@ using System.Windows.Shapes;
 namespace wpfBookStores
 {
     /// <summary>
-    /// Interaction logic for bsLogin.xaml
+    /// Interaction logic for bsBookManage.xaml
     /// </summary>
-    public partial class bsLogin : Window
+    public partial class bsBookManage : Window
     {
-        public bsLogin()
+        public bsBookManage()
         {
             InitializeComponent();
         }
-
     }
 }
