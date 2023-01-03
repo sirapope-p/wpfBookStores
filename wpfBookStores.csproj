@@ -121,5 +121,14 @@
   <ItemGroup>
     <Resource Include="gear2.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="BSicon2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="btnBack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="CAicon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

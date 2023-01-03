@@ -29,5 +29,12 @@ namespace wpfBookStores
         {
             this.WindowState = WindowState.Maximized;
         }
+
+        private void btnBooksManage_Click(object sender, RoutedEventArgs e)
+        {
+            bsBookManage bsBM = new bsBookManage();
+            this.Visibility = Visibility.Hidden;
+            bsBM.Show();
+        }
     }
 }

@@ -23,5 +23,12 @@ namespace wpfBookStores
         {
             InitializeComponent();
         }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            bsMain bsMain = new bsMain();
+            this.Visibility = Visibility.Hidden;
+            bsMain.Show();
+        }
     }
 }
