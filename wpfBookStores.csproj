@@ -130,5 +130,8 @@
   <ItemGroup>
     <Resource Include="CAicon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconRF.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

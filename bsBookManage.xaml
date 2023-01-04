@@ -19,12 +19,13 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
             <Label Content="BS - Book Manage" Height="50" Margin="23,1,0,0" Grid.Row="1" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontWeight="Bold" FontSize="28" HorizontalAlignment="Left" Width="383"/>
             <Label Content="Insert, Update, Delete. " HorizontalAlignment="Left" Height="36" Margin="23,40,0,0" Grid.Row="1" VerticalAlignment="Top" Width="339" Background="{x:Null}" Foreground="White" FontSize="22"/>
             <Label Content="Let Manage Your Books !" HorizontalAlignment="Left" Height="47" Margin="56,111,0,0" Grid.Row="1" VerticalAlignment="Top" Width="452" Background="{x:Null}" Foreground="White" FontSize="22"/>
-            <Label Content="." HorizontalAlignment="Left" Height="37" Margin="458,111,0,0" Grid.Row="1" VerticalAlignment="Top" Width="452" Background="{x:Null}" Foreground="White" FontSize="22"/>
+            <Label x:Name="lblStatus" Content="." HorizontalAlignment="Left" Height="37" Margin="458,111,0,0" Grid.Row="1" VerticalAlignment="Top" Width="452" Background="{x:Null}" Foreground="White" FontSize="22"/>
             <Rectangle HorizontalAlignment="Left" Height="91" Margin="1389,40,0,0" Grid.Row="1" VerticalAlignment="Top" Width="116" Opacity="0.1">
                 <Rectangle.Fill>
                     <ImageBrush ImageSource="BSicon2.png"/>
                 </Rectangle.Fill>
             </Rectangle>
+            <Button Content="Button" HorizontalAlignment="Left" Height="68" Margin="554,43,0,0" Grid.Row="1" VerticalAlignment="Top" Width="126" Click="Button_Click"/>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="583" VerticalAlignment="Top" Width="1542" Background="#FF494949" Margin="0,169,0,0" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
@@ -35,7 +36,7 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                 <RowDefinition Height="16*"/>
                 <RowDefinition Height="319*"/>
             </Grid.RowDefinitions>
-            <Button x:Name="btnInsertBook" Content="Insert Book" HorizontalAlignment="Left" Width="338" Grid.Row="1" Height="120" VerticalAlignment="Top" FontSize="22" BorderBrush="{x:Null}" Background="#FF414141" Foreground="White" Grid.Column="1"/>
+            <Button x:Name="btnInsertBook" Content="Insert Book" HorizontalAlignment="Left" Width="338" Grid.Row="1" Height="120" VerticalAlignment="Top" FontSize="22" BorderBrush="{x:Null}" Background="#FF414141" Foreground="White" Grid.Column="1" Click="btnInsertBook_Click"/>
             <Button x:Name="btnBack" Content="" HorizontalAlignment="Left" Margin="0,442,0,0" Width="63" Grid.Row="1" Height="63" VerticalAlignment="Top" FontSize="32" BorderBrush="{x:Null}" Grid.Column="1" Click="btnBack_Click">
                 <Button.Foreground>
                     <ImageBrush ImageSource="gearIcon.png"/>
@@ -44,16 +45,41 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     <ImageBrush ImageSource="btnBack.png"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="btnUpdateBook" Content="Update Book info" HorizontalAlignment="Left" Margin="0,142,0,0" Width="338" Grid.Row="1" Height="120" VerticalAlignment="Top" FontSize="22" BorderBrush="{x:Null}" Background="#FF414141" Foreground="White" Grid.Column="1"/>
-            <Button x:Name="btnDeleteBook" Content="Delete Book !" HorizontalAlignment="Left" Margin="0,290,0,0" Width="338" Grid.Row="1" Height="120" VerticalAlignment="Top" FontSize="22" BorderBrush="{x:Null}" Background="#FF414141" Foreground="White" Grid.Column="1"/>
+            <Button x:Name="btnUpdateBook" Content="Update Book info" HorizontalAlignment="Left" Margin="0,142,0,0" Width="338" Grid.Row="1" Height="120" VerticalAlignment="Top" FontSize="22" BorderBrush="{x:Null}" Background="#FF414141" Foreground="White" Grid.Column="1" Click="btnUpdateBook_Click"/>
+            <Button x:Name="btnDeleteBook" Content="Delete Book !" HorizontalAlignment="Left" Margin="0,290,0,0" Width="338" Grid.Row="1" Height="120" VerticalAlignment="Top" FontSize="22" BorderBrush="{x:Null}" Background="#FF414141" Foreground="White" Grid.Column="1" Click="btnDeleteBook_Click"/>
             <Label Content="Back" HorizontalAlignment="Left" Height="37" Margin="70,453,0,0" Grid.Row="1" VerticalAlignment="Top" Width="268" Background="{x:Null}" Foreground="White" FontSize="22" Grid.Column="1"/>
-        </Grid>
-        <Grid Grid.Column="1" HorizontalAlignment="Left" Height="572" Margin="415,169,0,0" VerticalAlignment="Top" Width="539" Background="#FF5B5B5B">
-            <Button Content="Save" HorizontalAlignment="Left" Height="56" Margin="88,444,0,0" VerticalAlignment="Top" Width="168"/>
-            <Button Content="Cancel" HorizontalAlignment="Left" Height="56" Margin="272,444,0,0" VerticalAlignment="Top" Width="168"/>
+            <Button x:Name="btnRefresh" Content="" HorizontalAlignment="Left" Height="63" Margin="275,442,0,0" VerticalAlignment="Top" Width="63" BorderBrush="{x:Null}" TabIndex="6" Grid.Column="1" Grid.Row="1" Click="btnRefresh_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="iconRF.png"/>
+                </Button.Background>
+            </Button>
+            <Grid x:Name="gridInsert" HorizontalAlignment="Left" Height="573" Margin="363,0,0,0" VerticalAlignment="Top" Width="573" Background="#FF414141" Grid.Column="1" Grid.RowSpan="2">
+                <TextBox x:Name="txtIBname" HorizontalAlignment="Left" Height="32" Margin="32,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" TabIndex="1" GotMouseCapture="txtIBname_GotMouseCapture" TextChanged="txtIBname_TextChanged"/>
+                <Label Content="Book Name" HorizontalAlignment="Left" Height="46" Margin="32,30,0,0" VerticalAlignment="Top" Width="441" Background="{x:Null}" Foreground="White" FontSize="22"/>
+                <TextBox x:Name="txtIBdescp" HorizontalAlignment="Left" Height="162" Margin="32,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="418" TabIndex="3" GotMouseCapture="txtIBdescp_GotMouseCapture" TextChanged="txtIBdescp_TextChanged"/>
+                <Label Content="Book Detail" HorizontalAlignment="Left" Height="46" Margin="32,226,0,0" VerticalAlignment="Top" Width="441" Background="{x:Null}" Foreground="White" FontSize="22"/>
+                <TextBox x:Name="txtIBprice" HorizontalAlignment="Left" Height="32" Margin="32,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" TabIndex="2" GotMouseCapture="txtIBprice_GotMouseCapture" TextChanged="txtIBprice_TextChanged"/>
+                <Label Content="Book Price" HorizontalAlignment="Left" Height="46" Margin="32,128,0,0" VerticalAlignment="Top" Width="441" Background="{x:Null}" Foreground="White" FontSize="22"/>
+                <Button x:Name="btnIBsave" Content="Save" HorizontalAlignment="Left" Height="56" Margin="32,470,0,0" VerticalAlignment="Top" Width="234" TabIndex="4" Click="btnIBsave_Click"/>
+                <Button x:Name="btnIBcancel" Content="Cancel" HorizontalAlignment="Left" Height="56" Margin="282,470,0,0" VerticalAlignment="Top" Width="168" TabIndex="5" Click="btnIBcancel_Click"/>
+            </Grid>
+            <Grid x:Name="gridUpdate" HorizontalAlignment="Left" Height="573" Margin="363,0,0,0" VerticalAlignment="Top" Width="573" Background="#FF414141" Grid.Column="1" Grid.RowSpan="2">
+                <TextBox x:Name="txtUBname" HorizontalAlignment="Left" Height="32" Margin="258,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" TabIndex="2" TextChanged="txtUBname_TextChanged"/>
+                <Label Content="Book Name" HorizontalAlignment="Left" Height="46" Margin="258,30,0,0" VerticalAlignment="Top" Width="270" Background="{x:Null}" Foreground="White" FontSize="22"/>
+                <TextBox x:Name="txtUBdescp" HorizontalAlignment="Left" Height="162" Margin="110,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="418" TabIndex="4" TextChanged="txtUBdescp_TextChanged"/>
+                <Label Content="Book Detail" HorizontalAlignment="Left" Height="46" Margin="110,226,0,0" VerticalAlignment="Top" Width="441" Background="{x:Null}" Foreground="White" FontSize="22"/>
+                <TextBox x:Name="txtUBprice" HorizontalAlignment="Left" Height="32" Margin="258,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" TabIndex="3" TextChanged="txtUBprice_TextChanged"/>
+                <Label Content="Book Price" HorizontalAlignment="Left" Height="46" Margin="258,128,0,0" VerticalAlignment="Top" Width="270" Background="{x:Null}" Foreground="White" FontSize="22"/>
+                <Button x:Name="btnUBsave" Content="Save" HorizontalAlignment="Left" Height="56" Margin="110,470,0,0" VerticalAlignment="Top" Width="234" TabIndex="5" Click="btnUBsave_Click"/>
+                <Button x:Name="btnUBcancel" Content="Cancel" HorizontalAlignment="Left" Height="56" Margin="360,470,0,0" VerticalAlignment="Top" Width="168" TabIndex="6" Click="btnUBcancel_Click"/>
+                <ComboBox x:Name="cbbUBisbn" HorizontalAlignment="Left" Height="32" Margin="39,76,0,0" VerticalAlignment="Top" Width="187" TabIndex="1" DropDownClosed="cbbUBisbn_DropDownClosed"/>
+                <Label Content="Select Book ISBN :" HorizontalAlignment="Left" Height="46" Margin="39,30,0,0" VerticalAlignment="Top" Width="187" Background="{x:Null}" Foreground="White" FontSize="22"/>
+                <TextBox x:Name="txtUBshowISBN" HorizontalAlignment="Left" Height="32" Margin="39,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189" IsEnabled="False" TextChanged="txtUBshowISBN_TextChanged"/>
+                <Label Content="ISBN" HorizontalAlignment="Left" Height="46" Margin="39,128,0,0" VerticalAlignment="Top" Width="187" Background="{x:Null}" Foreground="White" FontSize="22"/>
+            </Grid>
         </Grid>
         <Grid Grid.Column="1" HorizontalAlignment="Left" Height="572" Margin="954,169,0,0" VerticalAlignment="Top" Width="544" Background="#FF414141">
-            <DataGrid HorizontalAlignment="Left" Height="572" VerticalAlignment="Top" Width="534"/>
+            <DataGrid x:Name="dtgMain" HorizontalAlignment="Left" Height="572" VerticalAlignment="Top" Width="534" IsTabStop="True"/>
         </Grid>
 
     </Grid>

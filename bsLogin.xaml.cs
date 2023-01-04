@@ -51,7 +51,6 @@ namespace wpfBookStores
                 {
                     conn.Open();
 
-                    // Backup "INSERT INTO login(ID, userName, passWord, passOut) VALUES ('" + userName + "','" + passWord + "','" + passOut + "');"
                     string strComm = "SELECT * FROM login WHERE userName='" + txtUserInPut.Text + "' and passWord='" + txtPasswordInPut.Text + "' and passOut=0;";
                     OleDbCommand createComm = new OleDbCommand(strComm, conn);
 
@@ -63,16 +62,16 @@ namespace wpfBookStores
                     }
                     if (count == 1)
                     {
-                        MessageBox.Show("Username and Password is Correct");
                         bsMainOpen();
                     }
                     else if (count > 1)
                     {
-                        MessageBox.Show("Duplicate Username and Password");
+                        MessageBox.Show("Duplicate Username and Password. Contact Admin for Infomation");
+                        DeniteStatus();
                     }
                     else
                     {
-                        MessageBox.Show("Username and Password is not Correct");
+                        MessageBox.Show("Username and Password is not Correct", "Can't Accept!", MessageBoxButton.OK, MessageBoxImage.Error);
                         DeniteStatus();
                     }
                 }
@@ -85,9 +84,20 @@ namespace wpfBookStores
 
         private void cbUseGuestAcc_Checked(object sender, RoutedEventArgs e)
         {
+            txtUserInPut.Text = "GuestA20230101";
+            txtPasswordInPut.Text = "********";
             txtUserInPut.IsEnabled = false;
             txtPasswordInPut.IsEnabled = false;
             lblChat.Content = "Login Now. You checkin with Guest ID.";
+        }
+
+        private void cbUseGuestAcc_Unchecked(object sender, RoutedEventArgs e)
+        {
+            txtUserInPut.Text = "Username";
+            txtPasswordInPut.Text = "Pssword";
+            txtUserInPut.IsEnabled = true;
+            txtPasswordInPut.IsEnabled = true;
+            lblChat.Content = "Please Login with Your Account.";
         }
     }
 }

@@ -36,5 +36,12 @@ namespace wpfBookStores
             this.Visibility = Visibility.Hidden;
             bsBM.Show();
         }
+
+        private void btnLogOut_Click(object sender, RoutedEventArgs e)
+        {
+            bsLogin login = new bsLogin();
+            this.Visibility = Visibility.Hidden;
+            login.Show();
+        }
     }
 }
