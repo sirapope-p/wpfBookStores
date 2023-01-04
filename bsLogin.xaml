@@ -5,7 +5,7 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpfBookStores"
         mc:Ignorable="d"
-        Title="Book Stores 0 . 0 . 4" Height="360" Width="580" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" MaxWidth="580" MaxHeight="360" MinHeight="360" MinWidth="580" >
+        Title="Book Stores 0 . 1 . 0" Height="360" Width="580" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" MaxWidth="580" MaxHeight="360" MinHeight="360" MinWidth="580" >
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="17*"/>
@@ -23,7 +23,7 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
             <Label Content="Welcome to Book Stores" Height="50" Margin="23,1,0,0" Grid.Row="1" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontWeight="Bold" FontSize="28" HorizontalAlignment="Left" Width="339"/>
             <Label Content="Online book Selling" HorizontalAlignment="Left" Height="36" Margin="23,40,0,0" Grid.Row="1" VerticalAlignment="Top" Width="339" Background="{x:Null}" Foreground="White" FontSize="22"/>
             <Label x:Name="lblChat" Content="First. Please Login with Your Account." HorizontalAlignment="Left" Height="47" Margin="56,111,0,0" Grid.Row="1" VerticalAlignment="Top" Width="506" Background="{x:Null}" Foreground="White" FontSize="22" Grid.ColumnSpan="2"/>
-            <Rectangle HorizontalAlignment="Left" Height="91" Margin="367,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="116" Opacity="0.1">
+            <Rectangle HorizontalAlignment="Left" Height="91" Margin="398,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="116" Opacity="0.1" Grid.ColumnSpan="2">
                 <Rectangle.Fill>
                     <ImageBrush ImageSource="BSicon2.png"/>
                 </Rectangle.Fill>

@@ -25,7 +25,6 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     <ImageBrush ImageSource="BSicon2.png"/>
                 </Rectangle.Fill>
             </Rectangle>
-            <Button Content="Button" HorizontalAlignment="Left" Height="68" Margin="554,43,0,0" Grid.Row="1" VerticalAlignment="Top" Width="126" Click="Button_Click"/>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="583" VerticalAlignment="Top" Width="1542" Background="#FF494949" Margin="0,169,0,0" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
@@ -75,6 +74,20 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                 <ComboBox x:Name="cbbUBisbn" HorizontalAlignment="Left" Height="32" Margin="39,76,0,0" VerticalAlignment="Top" Width="187" TabIndex="1" DropDownClosed="cbbUBisbn_DropDownClosed"/>
                 <Label Content="Select Book ISBN :" HorizontalAlignment="Left" Height="46" Margin="39,30,0,0" VerticalAlignment="Top" Width="187" Background="{x:Null}" Foreground="White" FontSize="22"/>
                 <TextBox x:Name="txtUBshowISBN" HorizontalAlignment="Left" Height="32" Margin="39,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189" IsEnabled="False" TextChanged="txtUBshowISBN_TextChanged"/>
+                <Label Content="ISBN" HorizontalAlignment="Left" Height="46" Margin="39,128,0,0" VerticalAlignment="Top" Width="187" Background="{x:Null}" Foreground="White" FontSize="22"/>
+            </Grid>
+            <Grid x:Name="gridDelete" HorizontalAlignment="Left" Height="573" Margin="363,0,0,0" VerticalAlignment="Top" Width="573" Background="#FF414141" Grid.Column="1" Grid.RowSpan="2">
+                <TextBox x:Name="txtDBname" HorizontalAlignment="Left" Height="32" Margin="258,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" TabIndex="2" TextChanged="txtDBname_TextChanged" IsEnabled="False"/>
+                <Label Content="Book Name" HorizontalAlignment="Left" Height="46" Margin="258,30,0,0" VerticalAlignment="Top" Width="270" Background="{x:Null}" Foreground="White" FontSize="22"/>
+                <TextBox x:Name="txtDBdescp" HorizontalAlignment="Left" Height="162" Margin="110,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="418" TabIndex="4" TextChanged="txtDBdescp_TextChanged" IsEnabled="False"/>
+                <Label Content="Book Detail" HorizontalAlignment="Left" Height="46" Margin="110,226,0,0" VerticalAlignment="Top" Width="441" Background="{x:Null}" Foreground="White" FontSize="22"/>
+                <TextBox x:Name="txtDBprice" HorizontalAlignment="Left" Height="32" Margin="258,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" TabIndex="3" TextChanged="txtDBprice_TextChanged" IsEnabled="False"/>
+                <Label Content="Book Price" HorizontalAlignment="Left" Height="46" Margin="258,128,0,0" VerticalAlignment="Top" Width="270" Background="{x:Null}" Foreground="White" FontSize="22"/>
+                <Button x:Name="btnDBsave" Content="Save" HorizontalAlignment="Left" Height="56" Margin="110,470,0,0" VerticalAlignment="Top" Width="234" TabIndex="5" Click="btnDBsave_Click"/>
+                <Button x:Name="btnDBcancel" Content="Cancel" HorizontalAlignment="Left" Height="56" Margin="360,470,0,0" VerticalAlignment="Top" Width="168" TabIndex="6" Click="btnDBcancel_Click"/>
+                <ComboBox x:Name="cbbDBisbn" HorizontalAlignment="Left" Height="32" Margin="39,76,0,0" VerticalAlignment="Top" Width="187" TabIndex="1" DropDownClosed="cbbDBisbn_DropDownClosed"/>
+                <Label Content="Select Book ISBN :" HorizontalAlignment="Left" Height="46" Margin="39,30,0,0" VerticalAlignment="Top" Width="187" Background="{x:Null}" Foreground="White" FontSize="22"/>
+                <TextBox x:Name="txtDBshowISBN" HorizontalAlignment="Left" Height="32" Margin="39,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189" IsEnabled="False" TextChanged="txtDBshowISBN_TextChanged"/>
                 <Label Content="ISBN" HorizontalAlignment="Left" Height="46" Margin="39,128,0,0" VerticalAlignment="Top" Width="187" Background="{x:Null}" Foreground="White" FontSize="22"/>
             </Grid>
         </Grid>

@@ -48,6 +48,29 @@ namespace wpfBookStores
             {
                 MessageBox.Show(ex.Message);
             }
+
+        }
+        void fill_cbb_delete()
+        {
+            OleDbConnection conn = new OleDbConnection(strConn);
+            try
+            {
+                conn.Open();
+                string strComm = "SELECT * FROM books ORDER BY ISBN desc;";
+                OleDbCommand createComm = new OleDbCommand(strComm, conn);
+
+                OleDbDataReader dataR = createComm.ExecuteReader();
+                while (dataR.Read())
+                {
+                    string n = dataR.GetString(1);
+                    cbbDBisbn.Items.Add(n);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
         void clear_cbb()
         {
@@ -61,7 +84,6 @@ namespace wpfBookStores
                 conn.Open();
                 string Query = "SELECT * FROM books WHERE title = '" + cbbUBisbn.Text + "' "; // ตรงนี้ต้อง Where ชื่อ เพื่อเอาชื่อ ไปเทียบ
                 OleDbCommand createComm = new OleDbCommand(Query, conn);
-                //สร้างคำสั่ง
 
                 OleDbDataReader dataR = createComm.ExecuteReader();
                 while (dataR.Read())
@@ -123,8 +145,8 @@ namespace wpfBookStores
             gridUpdate.Visibility = Visibility.Hidden;
             gridUpdate.IsEnabled = false;
 
-            //gridDelete.Visibility = Visibility.Hidden;
-            //gridDelete.IsEnabled = false;
+            gridDelete.Visibility = Visibility.Hidden;
+            gridDelete.IsEnabled = false;
 
         }
         void ClearTextBox()
@@ -139,9 +161,12 @@ namespace wpfBookStores
             txtUBdescp.Text = "";
             txtUBprice.Text = "";
 
-            //txtDBfullname.Text = "";
-            //txtDBaddress.Text = "";
-            //txtDBemail.Text = "";
+            cbbDBisbn.SelectedIndex = -1;
+            txtDBshowISBN.Text = "";
+            txtDBname.Text = "";
+            txtDBdescp.Text = "";
+            txtDBprice.Text = "";
+
         }
 
         public bsBookManage()
@@ -149,6 +174,7 @@ namespace wpfBookStores
             InitializeComponent();
             hideGrid();
             fill_cbb();
+            fill_cbb_delete();
             
         }
         private void txtIBname_GotMouseCapture(object sender, MouseEventArgs e)
@@ -199,6 +225,20 @@ namespace wpfBookStores
             isbn = txtUBshowISBN.Text.Trim();
         }
 
+        private void txtDBname_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            title = txtUBname.Text.Trim();
+        }
+
+        private void txtDBprice_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            title = txtUBprice.Text.Trim();
+        }
+
+        private void txtDBdescp_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            title = txtUBdescp.Text.Trim();
+        }
 
 
         private void btnIBcancel_Click(object sender, RoutedEventArgs e)
@@ -221,7 +261,7 @@ namespace wpfBookStores
             hideGrid();
             showGrid(gridInsert);
             txtIBname.IsEnabled = true;
-            lblStatus.Content = "Insert Menu";
+            lblStatus.Content = "Add New";
             txtIBname.Focus();
             btnInsertBook.Background = Brushes.Black;
 
@@ -242,7 +282,7 @@ namespace wpfBookStores
         private void btnDeleteBook_Click(object sender, RoutedEventArgs e)
         {
             hideGrid();
-            //showGrid(gridDelete);
+            showGrid(gridDelete);
             lblStatus.Content = "Delete Book !!";
             ClearButtonColor();
             SetColorButton(btnDeleteBook);
@@ -287,14 +327,10 @@ namespace wpfBookStores
 
                 string strComm = "UPDATE books SET title = '" + title + "', description = '" + detail + "', price = '" + price + "' WHERE ISBN = " + isbn + ";";
                 OleDbCommand comm = new OleDbCommand(strComm, conn);
-                //comm.Connection = conn;
-                //comm.CommandType = CommandType.Text;
-                //comm.CommandText = strComm;
                 comm.ExecuteNonQuery();
-
                 ClearTextBox();
-
                 conn.Close();
+                MessageBox.Show("Update Success!", "Continue ?", MessageBoxButton.OK);
 
             }
             catch (Exception ex)
@@ -313,9 +349,75 @@ namespace wpfBookStores
             ClearTextBox();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void cbbDBisbn_DropDownClosed(object sender, EventArgs e)
         {
-            cbbUBisbn.Items.Clear();
+            OleDbConnection conn = new OleDbConnection(strConn);
+            try
+            {
+                conn.Open();
+                string Query = "SELECT * FROM books WHERE title = '" + cbbDBisbn.Text + "' ";
+                OleDbCommand createComm = new OleDbCommand(Query, conn);
+
+                OleDbDataReader dataR = createComm.ExecuteReader();
+                while (dataR.Read())
+                {
+                    string ISBN = dataR.GetInt32(0).ToString();
+                    string title = dataR.GetString(1);
+                    string description = dataR.GetString(2);
+                    string price = dataR.GetString(3);
+
+                    txtDBshowISBN.Text = ISBN;
+                    txtDBname.Text = title;
+                    txtDBprice.Text = price;
+                    txtDBdescp.Text = description;
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnDBsave_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Comfirm to Delete ?", "Delete", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                OleDbConnection conn = new OleDbConnection(strConn);
+                try
+                {
+                    conn.Open();
+                    isbn = txtDBshowISBN.Text;
+
+                    string strComm = "DELETE FROM books WHERE ISBN = " + isbn + ";";
+                    OleDbCommand comm = new OleDbCommand(strComm, conn);
+                    comm.ExecuteNonQuery();
+                    ClearTextBox();
+                    conn.Close();
+                    MessageBox.Show("Delete Success!", "Continue ?", MessageBoxButton.OK);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                ClearGrid(dtgMain);
+                clear_cbb();
+                fill_cbb();
+            }
+
+        }
+
+        private void btnDBcancel_Click(object sender, RoutedEventArgs e)
+        {
+            ClearTextBox();
+        }
+
+        private void txtDBshowISBN_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            isbn = txtUBshowISBN.Text.Trim();
         }
     }
     
