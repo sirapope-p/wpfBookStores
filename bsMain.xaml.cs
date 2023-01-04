@@ -24,7 +24,12 @@ namespace wpfBookStores
             InitializeComponent();
             
         }
-
+        private void btnLogOut_Click(object sender, RoutedEventArgs e)
+        {
+            bsLogin login = new bsLogin();
+            this.Visibility = Visibility.Hidden;
+            login.Show();
+        }
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Maximized;
@@ -37,11 +42,12 @@ namespace wpfBookStores
             bsBM.Show();
         }
 
-        private void btnLogOut_Click(object sender, RoutedEventArgs e)
+
+        private void btnCustomersManage_Click(object sender, RoutedEventArgs e)
         {
-            bsLogin login = new bsLogin();
+            bsCustomer bsCM = new bsCustomer();
             this.Visibility = Visibility.Hidden;
-            login.Show();
+            bsCM.Show();
         }
     }
 }

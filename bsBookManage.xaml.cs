@@ -75,8 +75,9 @@ namespace wpfBookStores
         void clear_cbb()
         {
             cbbUBisbn.Items.Clear();
+            cbbDBisbn.Items.Clear();
         }
-        private void cbbUBisbn_DropDownClosed(object sender, EventArgs e)
+        private void cbbUBisbn_DropDownClosed(object sender, EventArgs e) //อันนี้รอถึงส่วน update
         {
             OleDbConnection conn = new OleDbConnection(strConn);
             try
@@ -97,8 +98,6 @@ namespace wpfBookStores
                     txtUBname.Text = title;
                     txtUBprice.Text = price;
                     txtUBdescp.Text = description;
-
-
                 }
             }
             catch (Exception ex)
@@ -107,7 +106,7 @@ namespace wpfBookStores
             }
         }
 
-        void SelectText(TextBox tb)
+        void SelectText(TextBox tb) // อันนี้ไว้ใช้กับ gotMouseCapture
         {
             tb.SelectionStart = 0;
             tb.SelectionLength = tb.Text.Length;
@@ -224,7 +223,10 @@ namespace wpfBookStores
         {
             isbn = txtUBshowISBN.Text.Trim();
         }
-
+        private void txtDBshowISBN_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            isbn = txtUBshowISBN.Text.Trim();
+        }
         private void txtDBname_TextChanged(object sender, TextChangedEventArgs e)
         {
             title = txtUBname.Text.Trim();
@@ -305,6 +307,7 @@ namespace wpfBookStores
                 MessageBox.Show("Insert Success!", "New Book Added", MessageBoxButton.OK);
                 clear_cbb();
                 fill_cbb();
+                fill_cbb_delete();
 
             }
             catch (Exception ex)
@@ -340,6 +343,7 @@ namespace wpfBookStores
             ClearGrid(dtgMain);
             clear_cbb();
             fill_cbb();
+            fill_cbb_delete();
         }
 
 
@@ -397,15 +401,16 @@ namespace wpfBookStores
                     ClearTextBox();
                     conn.Close();
                     MessageBox.Show("Delete Success!", "Continue ?", MessageBoxButton.OK);
-
+                    ClearGrid(dtgMain);
+                    clear_cbb();
+                    fill_cbb();
+                    fill_cbb_delete();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
-                ClearGrid(dtgMain);
-                clear_cbb();
-                fill_cbb();
+
             }
 
         }
@@ -415,10 +420,7 @@ namespace wpfBookStores
             ClearTextBox();
         }
 
-        private void txtDBshowISBN_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            isbn = txtUBshowISBN.Text.Trim();
-        }
+
     }
     
 }

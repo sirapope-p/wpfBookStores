@@ -83,10 +83,10 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                 <Label Content="Book Detail" HorizontalAlignment="Left" Height="46" Margin="110,226,0,0" VerticalAlignment="Top" Width="441" Background="{x:Null}" Foreground="White" FontSize="22"/>
                 <TextBox x:Name="txtDBprice" HorizontalAlignment="Left" Height="32" Margin="258,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" TabIndex="3" TextChanged="txtDBprice_TextChanged" IsEnabled="False"/>
                 <Label Content="Book Price" HorizontalAlignment="Left" Height="46" Margin="258,128,0,0" VerticalAlignment="Top" Width="270" Background="{x:Null}" Foreground="White" FontSize="22"/>
-                <Button x:Name="btnDBsave" Content="Save" HorizontalAlignment="Left" Height="56" Margin="110,470,0,0" VerticalAlignment="Top" Width="234" TabIndex="5" Click="btnDBsave_Click"/>
+                <Button x:Name="btnDBsave" Content="Delete" HorizontalAlignment="Left" Height="56" Margin="110,470,0,0" VerticalAlignment="Top" Width="234" TabIndex="5" Click="btnDBsave_Click"/>
                 <Button x:Name="btnDBcancel" Content="Cancel" HorizontalAlignment="Left" Height="56" Margin="360,470,0,0" VerticalAlignment="Top" Width="168" TabIndex="6" Click="btnDBcancel_Click"/>
                 <ComboBox x:Name="cbbDBisbn" HorizontalAlignment="Left" Height="32" Margin="39,76,0,0" VerticalAlignment="Top" Width="187" TabIndex="1" DropDownClosed="cbbDBisbn_DropDownClosed"/>
-                <Label Content="Select Book ISBN :" HorizontalAlignment="Left" Height="46" Margin="39,30,0,0" VerticalAlignment="Top" Width="187" Background="{x:Null}" Foreground="White" FontSize="22"/>
+                <Label Content="Select Book Name :" HorizontalAlignment="Left" Height="46" Margin="39,30,0,0" VerticalAlignment="Top" Width="214" Background="{x:Null}" Foreground="White" FontSize="22"/>
                 <TextBox x:Name="txtDBshowISBN" HorizontalAlignment="Left" Height="32" Margin="39,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189" IsEnabled="False" TextChanged="txtDBshowISBN_TextChanged"/>
                 <Label Content="ISBN" HorizontalAlignment="Left" Height="46" Margin="39,128,0,0" VerticalAlignment="Top" Width="187" Background="{x:Null}" Foreground="White" FontSize="22"/>
             </Grid>

@@ -59,6 +59,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="bsCustomer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="bsLogin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -77,6 +81,9 @@
     </Compile>
     <Compile Include="bsBookManage.xaml.cs">
       <DependentUpon>bsBookManage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="bsCustomer.xaml.cs">
+      <DependentUpon>bsCustomer.xaml</DependentUpon>
     </Compile>
     <Compile Include="bsLogin.xaml.cs">
       <DependentUpon>bsLogin.xaml</DependentUpon>
