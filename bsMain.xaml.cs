@@ -49,5 +49,12 @@ namespace wpfBookStores
             this.Visibility = Visibility.Hidden;
             bsCM.Show();
         }
+
+        private void btnTransaction_Click(object sender, RoutedEventArgs e)
+        {
+            bsTransactions bsTR = new bsTransactions();
+            this.Visibility = Visibility.Hidden;
+            bsTR.Show();
+        }
     }
 }
