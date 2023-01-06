@@ -53,16 +53,16 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                 </Button.Background>
             </Button>
             <Grid x:Name="gridInsert" HorizontalAlignment="Left" Height="573" Margin="363,0,0,0" VerticalAlignment="Top" Width="573" Background="#FF414141" Grid.Column="1" Grid.RowSpan="2">
-                <TextBox x:Name="txtICname" HorizontalAlignment="Left" Height="32" Margin="32,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" TabIndex="1" TextChanged="txtICname_TextChanged"/>
-                <Label Content="Customer Name" HorizontalAlignment="Left" Height="46" Margin="32,30,0,0" VerticalAlignment="Top" Width="441" Background="{x:Null}" Foreground="White" FontSize="22"/>
-                <TextBox x:Name="txtICemail" HorizontalAlignment="Left" Height="162" Margin="32,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="418" TabIndex="3" TextChanged="txtICemail_TextChanged"/>
-                <Label Content="Customer Email" HorizontalAlignment="Left" Height="46" Margin="32,226,0,0" VerticalAlignment="Top" Width="418" Background="{x:Null}" Foreground="White" FontSize="22"/>
-                <TextBox x:Name="txtICaddress" HorizontalAlignment="Left" Height="32" Margin="32,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" TabIndex="2" TextChanged="txtICaddress_TextChanged"/>
-                <Label Content="Customer Address" HorizontalAlignment="Left" Height="46" Margin="32,128,0,0" VerticalAlignment="Top" Width="441" Background="{x:Null}" Foreground="White" FontSize="22"/>
+                <TextBox x:Name="txtICname" HorizontalAlignment="Left" Height="32" Margin="32,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" TabIndex="1" TextChanged="txtICname_TextChanged"/>
+                <Label Content="Customer Name" HorizontalAlignment="Left" Height="46" Margin="32,88,0,0" VerticalAlignment="Top" Width="441" Background="{x:Null}" Foreground="White" FontSize="22"/>
+                <TextBox x:Name="txtICemail" HorizontalAlignment="Left" Height="32" Margin="32,330,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" TabIndex="3" TextChanged="txtICemail_TextChanged"/>
+                <Label Content="Customer Email" HorizontalAlignment="Left" Height="46" Margin="32,284,0,0" VerticalAlignment="Top" Width="441" Background="{x:Null}" Foreground="White" FontSize="22"/>
+                <TextBox x:Name="txtICaddress" HorizontalAlignment="Left" Height="32" Margin="32,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" TabIndex="2" TextChanged="txtICaddress_TextChanged"/>
+                <Label Content="Customer Address" HorizontalAlignment="Left" Height="46" Margin="32,186,0,0" VerticalAlignment="Top" Width="441" Background="{x:Null}" Foreground="White" FontSize="22"/>
                 <Button x:Name="btnICsave" Content="Save" HorizontalAlignment="Left" Height="56" Margin="32,470,0,0" VerticalAlignment="Top" Width="234" TabIndex="4" Click="btnICsave_Click"/>
                 <Button x:Name="btnICcancel" Content="Cancel" HorizontalAlignment="Left" Height="56" Margin="282,470,0,0" VerticalAlignment="Top" Width="168" TabIndex="5" Click="btnICcancel_Click"/>
             </Grid>
-            <Grid x:Name="gridUpdate" HorizontalAlignment="Left" Height="573" Margin="363,0,0,0" VerticalAlignment="Top" Width="573" Background="#FF414141" Grid.Column="1" Grid.RowSpan="2">
+            <Grid x:Name="gridUpdate" HorizontalAlignment="Left" Height="573" Margin="363,0,0,0" VerticalAlignment="Top" Width="573" Background="#FF414141" Grid.Column="1" Grid.RowSpan="2" Visibility="Hidden">
                 <TextBox x:Name="txtUCname" HorizontalAlignment="Left" Height="32" Margin="70,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="392" TabIndex="2" TextChanged="txtUCname_TextChanged"/>
                 <Label Content="Customer Name" HorizontalAlignment="Left" Height="46" Margin="70,128,0,0" VerticalAlignment="Top" Width="270" Background="{x:Null}" Foreground="White" FontSize="22"/>
                 <TextBox x:Name="txtUCemail" HorizontalAlignment="Left" Height="32" Margin="70,370,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="392" TabIndex="4" TextChanged="txtUCemail_TextChanged"/>
@@ -76,7 +76,7 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                 <TextBox x:Name="txtUCshowID" HorizontalAlignment="Left" Height="32" Margin="345,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="117" IsEnabled="False" TextChanged="txtUCshowID_TextChanged"/>
                 <Label Content="Customer ID" HorizontalAlignment="Left" Height="46" Margin="345,30,0,0" VerticalAlignment="Top" Width="187" Background="{x:Null}" Foreground="White" FontSize="22"/>
             </Grid>
-            <Grid x:Name="gridDelete" HorizontalAlignment="Left" Height="573" Margin="363,0,0,0" VerticalAlignment="Top" Width="573" Background="#FF414141" Grid.Column="1" Grid.RowSpan="2">
+            <Grid x:Name="gridDelete" HorizontalAlignment="Left" Height="573" Margin="363,0,0,0" VerticalAlignment="Top" Width="573" Background="#FF414141" Grid.Column="1" Grid.RowSpan="2" Visibility="Hidden">
                 <TextBox x:Name="txtDCname" HorizontalAlignment="Left" Height="32" Margin="70,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="392" TabIndex="2" TextChanged="txtDCname_TextChanged" IsEnabled="False"/>
                 <Label Content="Customer Name" HorizontalAlignment="Left" Height="46" Margin="70,128,0,0" VerticalAlignment="Top" Width="270" Background="{x:Null}" Foreground="White" FontSize="22"/>
                 <TextBox x:Name="txtDCemail" HorizontalAlignment="Left" Height="32" Margin="70,370,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="392" TabIndex="4" TextChanged="txtDCemail_TextChanged" IsEnabled="False"/>
