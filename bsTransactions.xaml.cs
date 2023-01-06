@@ -299,36 +299,44 @@ namespace wpfBookStores
 
         private void btnTSsave_Click(object sender, RoutedEventArgs e)
         {
-            OleDbConnection conn = new OleDbConnection(strConn);
-            try
+            if (cbbSelectCustomer.SelectedIndex > 0 && cbbSelectBook.SelectedIndex > 0 && txtQuatity.Text != "" && txtDate.Text != "")
             {
-                MessageBoxResult result = MessageBox.Show("Comfirm to Save ?", "New Record", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if (result == MessageBoxResult.Yes)
+                OleDbConnection conn = new OleDbConnection(strConn);
+                try
                 {
-                    conn.Open();
+                    MessageBoxResult result = MessageBox.Show("Comfirm to Save ?", "New Record", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        conn.Open();
 
-                    string strComm = "INSERT INTO transactions(ISBN, customerID, quatity, pricePerUnit, totalPrice, orderDate) VALUES ('" + isbn + "','" + customerID + "','" + quatity + "','" + pricePerUnit + "','" + totalPrice + "','" + dateTR + "');";
-                    OleDbCommand createComm = new OleDbCommand(strComm, conn);
-                    createComm.ExecuteNonQuery();
+                        string strComm = "INSERT INTO transactions(ISBN, customerID, quatity, pricePerUnit, totalPrice, orderDate) VALUES ('" + isbn + "','" + customerID + "','" + quatity + "','" + pricePerUnit + "','" + totalPrice + "','" + dateTR + "');";
+                        OleDbCommand createComm = new OleDbCommand(strComm, conn);
+                        createComm.ExecuteNonQuery();
 
-                    conn.Close();
-                    ClearValue();
-                    RefreshGrid(dtgMain);
+                        conn.Close();
+                        ClearValue();
+                        RefreshGrid(dtgMain);
 
-                    var nv = new BrushConverter();
-                    btnTSsave.Background = (Brush)nv.ConvertFrom("#FFDDDDDD");
+                        var nv = new BrushConverter();
+                        btnTSsave.Background = (Brush)nv.ConvertFrom("#FFDDDDDD");
 
-                    MessageBox.Show("Saved!", "Your Welcome", MessageBoxButton.OK);
+                        MessageBox.Show("Saved!", "Your Welcome", MessageBoxButton.OK);
+                    }
+                    else
+                    {
+                        ClearValue();
+                    }
+
                 }
-                else
+
+                catch (Exception ex)
                 {
-                    ClearValue();
+                    MessageBox.Show(ex.Message);
                 }
-
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Put Value Please.","Incomplete Infomation.",MessageBoxButton.OK,MessageBoxImage.Stop);
             }
         }
 
