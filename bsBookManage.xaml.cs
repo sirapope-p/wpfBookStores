@@ -92,7 +92,7 @@ namespace wpfBookStores
                     string ISBN = dataR.GetInt32(0).ToString();
                     string title = dataR.GetString(1);
                     string description = dataR.GetString(2);
-                    string price = dataR.GetString(3);
+                    string price = dataR.GetDecimal(3).ToString();
 
                     txtUBshowISBN.Text = ISBN;
                     txtUBname.Text = title;
@@ -368,7 +368,7 @@ namespace wpfBookStores
                     string ISBN = dataR.GetInt32(0).ToString();
                     string title = dataR.GetString(1);
                     string description = dataR.GetString(2);
-                    string price = dataR.GetString(3);
+                    string price = dataR.GetDecimal(3).ToString();
 
                     txtDBshowISBN.Text = ISBN;
                     txtDBname.Text = title;

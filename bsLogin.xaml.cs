@@ -5,6 +5,7 @@ using System.Data;
 using System.Windows;
 using System.Windows.Controls;
 using System.Diagnostics;
+using System.Windows.Input;
 
 namespace wpfBookStores
 {
@@ -13,10 +14,11 @@ namespace wpfBookStores
     /// </summary>
     public partial class bsLogin : Window
     {
-        //int id; ไม่น่าได้ใช้
-        string userName = "";
-        string passWord = "";
-        int passOut;
+        void SelectText(TextBox tb)
+        {
+            tb.SelectionStart = 0;
+            tb.SelectionLength = tb.Text.Length;
+        }
         void DeniteStatus()
         {
             lblChat.Content = "Can't Accept! Please Enter Your Username and Password.";
@@ -34,7 +36,7 @@ namespace wpfBookStores
         public bsLogin()
         {
             InitializeComponent();
-            
+            txtUserInPut.Focus();
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
@@ -66,13 +68,18 @@ namespace wpfBookStores
                     }
                     else if (count > 1)
                     {
-                        MessageBox.Show("Duplicate Username and Password. Contact Admin for Infomation");
+                        MessageBox.Show("Duplicate Username and Password. Contact Admin for More Infomation");
                         DeniteStatus();
                     }
                     else
                     {
-                        MessageBox.Show("Username and Password is not Correct", "Can't Accept!", MessageBoxButton.OK, MessageBoxImage.Error);
-                        DeniteStatus();
+                        MessageBoxResult result = MessageBox.Show("Username and Password is not Correct", "Can't Accept!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        DeniteStatus(); 
+
+                        if (result == MessageBoxResult.OK)
+                        {
+                            txtUserInPut.Focus();
+                        }
                     }
                 }
             }
@@ -98,6 +105,37 @@ namespace wpfBookStores
             txtUserInPut.IsEnabled = true;
             txtPasswordInPut.IsEnabled = true;
             lblChat.Content = "Please Login with Your Account.";
+        }
+
+
+        private void txtUserInPut_GotFocus(object sender, RoutedEventArgs e)
+        {
+            SelectText(txtUserInPut);
+        }
+
+        private void txtPasswordInPut_GotFocus(object sender, RoutedEventArgs e)
+        {
+            SelectText(txtPasswordInPut);
+        }
+
+        private void txtUserInPut_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                TraversalRequest request = new TraversalRequest(FocusNavigationDirection.Next);
+                request.Wrapped = true;
+                ((TextBox)sender).MoveFocus(request);
+            }
+        }
+
+        private void txtPasswordInPut_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                TraversalRequest request = new TraversalRequest(FocusNavigationDirection.Next);
+                request.Wrapped = true;
+                ((TextBox)sender).MoveFocus(request);
+            }
         }
     }
 }
